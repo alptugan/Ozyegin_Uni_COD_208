@@ -1,0 +1,44 @@
+int v1 = 0;
+
+void setup() {
+  size(800,400);
+  background(255);
+}
+
+void draw() {
+  background(v1);
+  
+  
+  
+  
+  
+  
+  
+  if(v1 >= 255) {
+    v1 = 0;
+    println("ok it works..." + v1);
+  }
+  
+  v1 = v1 + 1;
+  
+  println("draw ici fonksiyon : " + v1);
+  
+  /*
+  fill(255);
+  point(10,10);
+  
+  line(20,20,70,90);
+  
+  ellipse(40,40,16,36);
+  
+  rect(70,90,40,40);
+  
+  rect(70,90+40,120,40);
+  
+  
+  
+  fill(0);
+  ellipse(width/2,height/2,60,60);
+  */
+  
+}
