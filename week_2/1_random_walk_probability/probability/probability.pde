@@ -25,16 +25,16 @@ void draw() {
   
   
   //println(choice);
-  if(choice < 0.3) {
+  if(choice < 0.2) {
     x = x - 1;
   }
   
-  if(choice > 0.3 && choice < 0.6) {
+  if(choice > 0.2 && choice < 0.3) {
     
    x = x + 1; 
   }
   
-  if(choice > 0.6 && choice < 0.8) {
+  if(choice > 0.3 && choice < 0.8) {
     y = y -1;
   }
   
@@ -85,6 +85,6 @@ void draw() {
   }
   
   */
-  stroke(255);
+  stroke(0);
   point(x,y);
 }
