@@ -1,0 +1,47 @@
+/*
+20 % chance to move left,
+10 % chance to move right
+50 % chance to move up
+20 % chance to move down
+*/
+float choice;
+
+PVector position;
+
+
+void setup() {
+  size(800,400);
+  background(255,255,255);
+  
+  position = new PVector(width/2,height/2);
+  
+  
+}
+
+void draw() {
+  //background(30);
+  choice = random(1); // between 0 and 1
+  
+  
+  //println(choice);
+  if(choice < 0.2) {
+    position.x = position.x - 1;
+  }
+  
+  if(choice > 0.2 && choice < 0.3) {
+    position.x = position.x + 1;
+  }
+  
+  if(choice > 0.3 && choice < 0.8) {
+    position.y = position.y - 1;
+  }
+  
+  if(choice > 0.8 && choice < 1.0)
+  {
+    position.y = position.y + 1;
+  }
+  
+ 
+  stroke(0);
+  ellipse(position.x,position.y,5,5);
+}
