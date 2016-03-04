@@ -16,14 +16,14 @@ int rsp = 5;
 void setup() {
   size(320, 240);
   video = new Capture(this, width, height, 30);
-  video.start();
+
   prevFrame = createImage(video.width, video.height, RGB);
 }
  
 void draw() {
  
  
-  if (video.available()) {
+ if (video.available()) {
  
     prevFrame.copy(video, 0, 0, video.width, video.height, 0, 0, video.width, video.height); 
     prevFrame.updatePixels();
@@ -53,6 +53,7 @@ void draw() {
       float r2 = red(previous); 
       float g2 = green(previous); 
       float b2 = blue(previous);
+      
       float diff = dist(r1, g1, b1, r2, g2, b2);
  
  
@@ -63,13 +64,14 @@ void draw() {
         ave++;
       } 
       else {
- 
         pixels[loc] = video.pixels[loc];
+        
       }
     }
   }
   fill(255);
-  rect(0, 0, width, height);
+  //rect(0, 0, width, height);
+  
   if (ave != 0) { 
     Mx = Mx/ave;
     My = My/ave;
@@ -91,4 +93,16 @@ void draw() {
   noStroke();
   fill(0, 0, 255);
   ellipse(ballX, ballY, 20, 20);
+}
+
+void keyReleased() {
+  println(key);
+  
+  if(key == 's') {
+    video.start();
+  }
+  
+  if(key == 'p') {
+    video.stop();
+  }
 }

@@ -4,6 +4,12 @@ void setup() {
   size(640,360);
   //Create Mover object.
   mover = new Mover();
+  
+  PVector v = new PVector(2,3);
+PVector u = new PVector(4,5);
+PVector w = PVector.add(u,v);
+
+println(w);
 }
  
 void draw() {
@@ -20,14 +26,21 @@ class Mover {
   //Our object has two PVectors: location and velocity.
   PVector location;
   PVector velocity;
+  
+    PVector acceleration;
+//The variable topspeed will limit the magnitude of velocity.
+  float topspeed;
  
   Mover() {
     location = new PVector(random(width),random(height));
-    velocity = new PVector(random(-2,2),random(-2,2));
+    velocity = new PVector(0,0);
+    acceleration = new PVector(-0.001,0.01);
+    topspeed = 10;
   }
  
   void update() {
   //Motion 101: Location changes by velocity.
+  velocity.add(acceleration);
     location.add(velocity);
   }
  

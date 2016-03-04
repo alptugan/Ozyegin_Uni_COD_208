@@ -1,35 +1,12 @@
-Mover mover;
- 
-void setup() {
-  size(640,360);
-  //Create Mover object.
-  mover = new Mover();
-}
- 
-void draw() {
-  background(255);
- 
-  //Call functions on Mover object.
-  mover.update();
-  mover.checkEdges();
-  mover.display();
-}
- 
 class Mover {
  
   //Our object has two PVectors: location and velocity.
   PVector location;
   PVector velocity;
-  
-    PVector acceleration;
-//The variable topspeed will limit the magnitude of velocity.
-  float topspeed;
  
   Mover() {
     location = new PVector(random(width),random(height));
-    velocity = new PVector(0,0);
-    acceleration = new PVector(-0.001,0.01);
-    topspeed = 10;
+    velocity = new PVector(random(-2,2),random(-2,2));
   }
  
   void update() {
