@@ -1,0 +1,95 @@
+
+class Circle {
+  float chance1;
+  float chance2;
+  float chance3;
+  float chance4;
+
+  float startX = width;
+  float startY = height;
+
+  float choice;
+
+  color shapeColor;
+
+  String type;
+
+
+  PVector pos;
+  PVector velocity;
+  PVector position;
+
+  int radius;
+
+  Circle(float startX, float startY, String _type, color _shapeColor) {
+
+    shapeColor = _shapeColor;
+    type    = _type;
+    chance1 = random(2);
+    chance2 = random(2);
+    chance3 = random(2);
+    chance4 = random(2);
+
+    position = new PVector(startX, startY);
+
+
+
+    radius = 3;
+    pos = new PVector(random(width), random(height));
+    velocity = new PVector(random(3) - 1, random(3) - 1);
+  }
+
+  void drawCircle() {
+    noStroke();
+    fill(120, 254, 207);
+    ellipse(pos.x, pos.y, radius, radius);
+
+    if ( choice < chance1) {
+      position.x = position.x - 1;
+    }
+
+    if (choice > chance1 && choice < chance2) {
+      position.x = position.x + 1;
+    }
+
+    if (choice > chance2 && choice < chance3) {
+      position.y = position.y - 1;
+    }
+
+    if (choice > chance3 && choice < chance4) {
+      position.y = position.y +1;
+    }
+
+    if (choice > chance4 && choice < 2.0) {
+      position.x = position.x - 1;
+    }
+
+    if (type == "ellipse") {
+      stroke(shapeColor);
+      ellipse(position.x, position.y, 5, 5);
+    }
+  }
+
+  void updateCircle() {
+    pos.x += velocity.x;
+    pos.y += velocity.y;
+
+    if (pos.x > (width + radius)) {
+      pos.x = 0 -radius;
+    }
+
+    if (pos.x < (0 - radius)) {
+      pos.x = width + radius;
+    }
+
+    if (pos.y > (height + radius)) {
+      pos.y = 0 - radius;
+    }
+
+    if (pos.y < (0 - radius)) {
+      pos.y = height + radius;
+    }
+
+    drawCircle();
+  }
+}
