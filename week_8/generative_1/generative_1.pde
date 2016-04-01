@@ -17,6 +17,7 @@ int rect_num;
 int rect_w;
 int rect_h;
 int rect_thickness;
+boolean rotateRectangles;
 boolean drawRectangles;
 
 void setup() {
@@ -28,8 +29,8 @@ void setup() {
 
   // Default Rectangle variables
   rect_radius = 180;
-  rect_num = 12;
-  rect_w = 30;
+  rect_num = 22;
+  rect_w = 70;
   rect_h = 30;
   rect_thickness = 1;
   drawRectangles = true;
@@ -43,15 +44,13 @@ void setup() {
   // GUI
   cp5 = new ControlP5(this);
 
-  
-
-
   // RECTANGLES
   cp5.addToggle("drawRectangles")
     .setPosition(20, 10)
       .setSize(10, 10)
         .setValue(drawRectangles)
           ;
+          
 
   cp5.addSlider("rect_radius")
     .setPosition(20, 40)
@@ -88,6 +87,11 @@ void setup() {
           .setValue(rect_thickness)
             ;
 
+   cp5.addToggle("rotateRectangles")
+    .setPosition(20, 140)
+      .setSize(10, 10)
+        .setValue(true)
+          ;
 
 }
 
@@ -119,14 +123,14 @@ void draw() {
     String cminute = String.valueOf(mi);
     String csecond = String.valueOf(s);
 
-    beginRecord(PDF, "name-surname-"+ cyear + "-" + cmonth + "-" + cday + "-" + chour + "." + cminute + "." + csecond +".ai");
+    beginRecord(PDF, "alp_tugan-"+ cyear + "-" + cmonth + "-" + cday + "-" + chour + "." + cminute + "." + csecond +".ai");
   }
   // ---------------------------------------------------------------
 
   background(0);
 
   // RECTANGLES
-  float x, y;
+  float x,y;
 
   // to make equal space around 360 degree of circle
   float anglePerRect = 360.0f / rect_num;  
@@ -141,10 +145,13 @@ void draw() {
 
     noFill();
     pushMatrix();
-
     translate(x, y);
+    
     rectMode(CENTER);
-    rotate(rad);
+    
+    if(rotateRectangles == true) {
+      rotate(rad);
+    }
     //radians(num * anglePerRect)
     stroke(255);
 
@@ -152,7 +159,7 @@ void draw() {
       rect(0, 0, rect_w, rect_h);
     }
 
-    //rectMode(CORNER);
+    rectMode(CORNER);
     popMatrix();
   }
   // RECTANGLE END
