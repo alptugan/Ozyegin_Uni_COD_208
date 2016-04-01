@@ -11,9 +11,9 @@
 
 **week 6** - OOP, generative arts
 
-**week 7** - OOP, generative arts, importing additional libraries : **ControlP5** & GUI
+**week 7** - OOP, generative arts, importing additional libraries : **[ControlP5](http://www.sojamo.de/libraries/controlP5/)** & GUI
 
-**week 8** - OOP, importing additonal libraries : **OscP5** (Sending receiving osc message over network) 
+**week 8** - OOP, importing additonal libraries : **[OscP5](http://www.sojamo.de/libraries/oscp5/)** (Sending receiving osc message over network) 
 
 To send OSC messages over IOS mobile devices -> download one of the following apps from your IOS mobile device; 
 
@@ -26,3 +26,12 @@ To send OSC messages over Android mobile devices -> download one of the followin
 **(free)** - [QuickOSC](https://play.google.com/store/apps/details?id=com.ahmetkizilay.controls.osc)
 
 **(free)** - [GoOSC](https://play.google.com/store/apps/details?id=org.tuxopolis.GoOSC)
+
+**week 9** - OOP, GUI, OSC and mobile device integration
+
+
+**week 10** - OOP, GUI, OSC, SOUND and mobile device integration
+
+**week 11** - OOP, GUI, OSC, SOUND, VIDEO and mobile device integration
+
+**week 12** - OOP, getting data from dynamic sources, social media integration
