@@ -7,7 +7,9 @@ NetAddress myRemoteLocation;
 int listeningPortNumber = 13000;
 int serverPortNumber    = 12000;
 
-String serverAddress    = "127.0.0.1";
+String serverAddress    = "localhost";
+
+OscMessage myMessage2;
 
 void setup() {
   size(400,400);
@@ -24,18 +26,27 @@ void setup() {
    * send messages back to this sketch.
    */
   myRemoteLocation = new NetAddress(serverAddress,serverPortNumber);
+  
+  
 }
 
 
 void draw() {
   background(0);  
+  
+  myMessage2 = new OscMessage("/test");
+  myMessage2.add(mouseX); /* add an int to the osc message */
+  myMessage2.add(12.34); /* add a float to the osc message */
+  myMessage2.add("some text"); /* add a string to the osc message */
+  /* send the message to server applicaiton */
+  oscP5.send(myMessage2, myRemoteLocation); 
 }
 
 void mousePressed() {
   /* in the following different ways of creating osc messages are shown by example */
   OscMessage myMessage = new OscMessage("/test");
   
-  myMessage.add(123); /* add an int to the osc message */
+  myMessage.add(mouseX); /* add an int to the osc message */
   myMessage.add(12.34); /* add a float to the osc message */
   myMessage.add("some text"); /* add a string to the osc message */
 
