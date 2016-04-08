@@ -7,7 +7,7 @@ NetAddress myRemoteLocation;
 int listeningPortNumber = 13000;
 int serverPortNumber    = 12000;
 
-String serverAddress    = "localhost";
+String serverAddress    = "169.254.150.156";
 
 OscMessage myMessage2;
 
@@ -34,7 +34,7 @@ void setup() {
 void draw() {
   background(0);  
   
-  myMessage2 = new OscMessage("/test");
+  myMessage2 = new OscMessage("/         ");
   myMessage2.add(mouseX); /* add an int to the osc message */
   myMessage2.add(12.34); /* add a float to the osc message */
   myMessage2.add("some text"); /* add a string to the osc message */
