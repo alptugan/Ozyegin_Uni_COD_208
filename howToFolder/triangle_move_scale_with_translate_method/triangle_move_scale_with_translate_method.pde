@@ -51,11 +51,11 @@ void draw() {
   
   translate(width / 2, height / 2);
   // map mouseX value  to keep the output in a fixed range
-  float scaleFactor = map(mouseX,0,width,0.1,7);
+  float scaleFactor = map(mouseX,0,width,0.5,10);
   scale(scaleFactor,scaleFactor);
   
   //println(PI/(millis()));
-  rotate(radians(millis())*0.1);
+  rotate(radians(millis())*0.2);
   stroke(#7F8C8D);
   noFill();
   
