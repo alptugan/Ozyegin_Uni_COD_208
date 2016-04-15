@@ -20,6 +20,9 @@ float moveTime;
 boolean isMouseMoving = false;
 
 float animationCounter = 5;
+float animationSpeed = 0.8;
+
+int delayTime = 2000;
 
 void setup() {
   size(640, 380);
@@ -61,37 +64,33 @@ void draw() {
     scrollBarH = animationCounter;
 
     if (animationCounter > 5) {
-      animationCounter = animationCounter - 0.5;
+      animationCounter = animationCounter - animationSpeed;
     }
-  }
+  } 
 
-  if (mouseX - pmouseX != 0 && mouseY - pmouseY != 0) {
-    if (isMouseMoving == false) {
-      isMouseMoving = true;
-      
-      println("set true");
-    }
-  } else {
-    if (isMouseMoving == true) {
-      moveTime = millis();
-      isMouseMoving = false;
-      println("set true");
-    }
-  }
-
-println(millis() - moveTime);
-  if (isMouseMoving == true ) {
-
-    scrollBarH = animationCounter;
-
-    if (animationCounter < 20) {
-      animationCounter = animationCounter + 0.5;
-    }
-
+  if (isMouseMoving == true) {
+    animationCounter = animationCounter + animationSpeed * delayTime/1000;
     if (animationCounter > 20) {
       animationCounter = 20;
     }
+    
+    scrollBarH = animationCounter;
   }
+
+  if (mouseX - pmouseX != 0 || mouseY - pmouseY != 0) {
+    if (isMouseMoving == false) {
+      isMouseMoving = true;
+      moveTime = millis();
+      //println("set true");
+    }
+  } else {
+    if (isMouseMoving == true && millis() - moveTime > 2000) {
+      moveTime = millis();
+      isMouseMoving = false;
+      //println("set false");
+    }
+  }
+
 
   // check current mouse X postion & mouse previous X postion 
   // to see if mouse is moving or not
@@ -100,11 +99,9 @@ println(millis() - moveTime);
   fill(255, 255, 255, 100);
   rect(0, 0, width, scrollBarH);
 
+
   fill(#F1C40F);
   rect(0, 0, scrollBarCurrentD, scrollBarH);
-
-  // Draws a line on the screen
-  // when the movie half-finished
 }
 
 
@@ -113,14 +110,5 @@ void mousePressed() {
     //println("on scroller");
     mPosition= map(mouseX, 0, width, 0, movie.duration());
     movie.jump(mPosition);
-  } else {
-    //println("not on scroller");
-  }
-}
-
-void mouseMoved() {
-  //moveTime = millis();
-  /*
-  moveTime = millis();
-   isMouseMoving = true;*/
+  } 
 }
